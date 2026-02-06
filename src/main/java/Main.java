@@ -177,77 +177,9 @@ public class Main
 	
 
 
-    
 
 
-    public static int between10and100(BinNode<Integer> t)
-    {
-        if (t == null) 
-            return 0;
-        
-        int count=0;
-            
-        if (t.getValue() < 100 && t.getValue() >= 10) 
-            count=1;
-            
-        return count + between10and100(t.getLeft()) + between10and100(t.getRight());
-    }
-    
-    
-    
-    
-    public static int numLeaves (BinNode<Integer> t) 
-	{
-        if (t == null) 
-            return 0;
-        
-        int count=0;
-            
-        if (!t.hasRight() && !t.hasLeft()) 
-            count=1;
-            
-        return count + numLeaves(t.getLeft()) + numLeaves(t.getRight());
-	}
-    
-    
-    
-    
-    public static double hasTwoSons (BinNode<Integer> t) 
-	{
-        if (t == null) 
-            return 0;
-        
-        double sum=0;
-            
-        if (t.hasRight() && t.hasLeft()) 
-            sum = t.getValue();
-            
-        return sum + hasTwoSons(t.getLeft()) + hasTwoSons(t.getRight());
-	}
-	
-	
-	
-	
-	public static int twoSonsNotLeaves (BinNode<Integer> t) 
-	{
-        if (t == null) 
-            return 0;
-        
-        int count = 0;
-            
-        if (t.hasRight() && t.hasLeft())
-        {
-            if ((t.getLeft().hasLeft() || t.getLeft().hasRight()) && (t.getRight().hasRight() || t.getRight().hasLeft()))
-                count = 1;
-        }
-        return count + twoSonsNotLeaves(t.getLeft()) + twoSonsNotLeaves(t.getRight());
-	}
-
-
-
-
-
-    public static boolean allLeavesEven(BinNode<Integer> t)
+	 public static boolean allLeavesEven(BinNode<Integer> t)
     {
         if (t == null)
             return true;   
@@ -300,7 +232,7 @@ public class Main
     
     
     
-    public static void everyNodeEqualsSons(BinNode<Integer> t)
+    public static void everyNodeEqualsSons(BinNode<Integer> t) 
     {
         if (t == null)
             return;   
@@ -316,11 +248,78 @@ public class Main
         everyNodeEqualsSons(t.getLeft());
     }
     
+
+    
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int between10and100(BinNode<Integer> t) //12
+    {
+        if (t == null) 
+            return 0;
+        
+        int count=0;
+            
+        if (t.getValue() < 100 && t.getValue() >= 10) 
+            count=1;
+            
+        return count + between10and100(t.getLeft()) + between10and100(t.getRight());
+    }
     
     
     
     
-    public static boolean containsAll(BinNode<Integer> t1, BinNode<Integer> t2)
+    public static int numLeaves (BinNode<Integer> t) //14
+	{
+        if (t == null) 
+            return 0;
+        
+        int count=0;
+            
+        if (!t.hasRight() && !t.hasLeft()) 
+            count=1;
+            
+        return count + numLeaves(t.getLeft()) + numLeaves(t.getRight());
+	}
+    
+    
+    
+    
+    public static double hasTwoSons (BinNode<Integer> t) //16
+	{
+        if (t == null) 
+            return 0;
+        
+        double sum=0;
+            
+        if (t.hasRight() && t.hasLeft()) 
+            sum = t.getValue();
+            
+        return sum + hasTwoSons(t.getLeft()) + hasTwoSons(t.getRight());
+	}
+	
+	
+	
+	
+	public static int twoSonsNotLeaves (BinNode<Integer> t) //17
+	{
+        if (t == null) 
+            return 0;
+        
+        int count = 0;
+            
+        if (t.hasRight() && t.hasLeft())
+        {
+            if ((t.getLeft().hasLeft() || t.getLeft().hasRight()) && (t.getRight().hasRight() || t.getRight().hasLeft()))
+                count = 1;
+        }
+        return count + twoSonsNotLeaves(t.getLeft()) + twoSonsNotLeaves(t.getRight());
+	}
+
+    
+    
+    
+    
+    public static boolean containsAll(BinNode<Integer> t1, BinNode<Integer> t2) //18
     {
         if (t2 == null)
             return true;
@@ -338,7 +337,7 @@ public class Main
     
         
     
-    public static boolean from1ToN(BinNode<Integer> t, int n)
+    public static boolean from1ToN(BinNode<Integer> t, int n) //20
     {
         for (int i = 1; i <= n; i++)
         {
@@ -348,6 +347,7 @@ public class Main
     
         return countNodes(t) == n;
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     
