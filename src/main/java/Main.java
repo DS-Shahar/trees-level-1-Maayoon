@@ -375,6 +375,94 @@ public class Main
         return 1 + countNodes(t.getLeft()) + countNodes(t.getRight());
     }
 /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+    public static int maxNode(BinNode<Integer> t, int max) //ex 23.a
+    {
+        if (t == null)
+            return max;
+        
+        max = Math.max(max, t.getValue());
+        
+        int leftMax = maxNode(t.getLeft(), max);
+        int rightMax = maxNode(t.getRight(), max);
+        
+        return Math.max(leftMax, rightMax);
+    }
+    
+    
+    public static int minNode (BinNode<Integer> t, int min) //ex 23.b
+    {
+        if (t == null)
+            return min;
+        
+        min = Math.min(min, t.getValue());
+        
+        int leftMin = minNode(t.getLeft(), min);
+        int rightMin = minNode(t.getRight(), min);
+        
+        return Math.min(leftMin, rightMin);
+    }
+
+
+
+
+    
+    public static int treeHeight(BinNode<Integer> t) //ex 27
+    {
+        if (t == null)
+            return 0;
+
+        int leftHeight = treeHeight(t.getLeft());
+        int rightHeight = treeHeight(t.getRight());
+        
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+    
+    
+    
+    
+    
+    public static boolean treeHeightCorrect(BinNode<Integer> t) //ex 26
+    {
+        return numLeaves(t) == Math.pow(2,treeHeight(t));
+    }
+    
+    
+    
+        
+        
+    public static boolean balancedSons(BinNode<Integer> t) //ex 22
+    {
+        if (t == null) 
+            return true;
+  
+        if (t.hasRight() && !(t.hasLeft()) || t.hasLeft() && !(t.hasRight())) 
+            return false;
+            
+        else
+            return true && balancedSons(t.getLeft()) && balancedSons(t.getRight());
+    }
+    
+    
+    
+    
+    
+    
+    public static boolean symmetry(BinNode<Integer> t) // ex 21
+    {
+        if (t == null) 
+            return true;  
+    
+        if (Math.abs(treeHeight(t.getLeft()) - treeHeight(t.getRight())) > 1) 
+            return false;
+
+        return symmetry(t.getLeft()) && symmetry(t.getRight());
+    }
+///////////////////////////////////////////////////////////////////////////////////////
     
 
 
