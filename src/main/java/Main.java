@@ -466,6 +466,31 @@ public class Main
     
 
 
+    public static int examQuestionCount(BinNode<Integer> t) 
+    {
+        if (t==null)
+            return 0;
+        
+        int valueLeft = 0;
+        int valueRight = 0;
+
+        if (t.hasLeft())
+            valueLeft = t.getLeft().getValue();
+
+        if (t.hasRight())
+            valueRight = t.getRight().getValue();
+            
+        if(isPrime(valueLeft+valueRight))
+            return examQuestionCount(t.getLeft()) + examQuestionCount(t.getRight()) + 1;
+        
+        else
+            return examQuestionCount(t.getLeft()) + examQuestionCount(t.getRight()); 
+    }
+
+
+
+	
+
 	
 	public static void main(String [] args)
 	{
